@@ -18,10 +18,12 @@ public class Main {
             int col = myObj.nextInt();
 
             System.out.println("Changing: " +row+" - "+col);
-            map.insert_cell(row,col, new Block((char) ('A' + i), i%2 == 0, false));
+
+            char content = (char) ('A' + i); // imposta il contenuto con lettere dell'alfabeto consecutive
+            boolean falls_with_gravity = i%2 == 0; // alterna blocchi con gravità e senza
+            map.insert_rec(row,col, new Block(content, falls_with_gravity, false));
 
             map.display_on_out();
         }
-
     }
 }

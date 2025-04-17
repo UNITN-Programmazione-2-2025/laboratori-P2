@@ -1,7 +1,5 @@
 package data;
 
-import static java.lang.Math.min;
-
 public class Map {
     private final Block[][] map;
     private final int width;
@@ -31,7 +29,7 @@ public class Map {
         map[x][y] = cell;
     }
 
-    private void swap_cell(int x, int y) {
+    private void swap(int x, int y) {
         Block tmp = map[x + 1][y];
         map[x + 1][y] = map[x][y];
         map[x][y] = tmp;
@@ -40,9 +38,18 @@ public class Map {
     public void insert_cell(int x, int y, Block cell) {
         map[x][y] = cell;
         for (int i = x;  i < height-1; i++) {
-            if (map[i][y].isFalls_with_gravity() & map[i+1][y].isFalls_through()) {
-               swap_cell(i, y);
+            if (map[i][y].isFalls_with_gravity() && map[i+1][y].isFalls_through()) {
+               swap(i, y);
             }
         }
+    }
+
+    public void insert_rec(int x, int y, Block cell) {
+        if (!cell.isFalls_with_gravity() || x == height - 1 || !map[x+1][y].isFalls_through()) {
+            map[x][y] = cell;
+            return;
+        }
+
+        insert_rec(x+1, y, cell);
     }
 }
