@@ -30,7 +30,7 @@ _(L'elenco verrà aggiornato man mano che nuovi laboratori saranno disponibili.)
 ```bash
 git clone https://github.com/UNITN-Programmazione-2-2025/laboratori-P2.git
 cd laboratori-P2
-git checkout lab2   # Sostituisci 'lab2' con il laboratorio desiderato
+git switch --detach <tag>
 ```
 
 Per visualizzare tutti i laboratori disponibili:
