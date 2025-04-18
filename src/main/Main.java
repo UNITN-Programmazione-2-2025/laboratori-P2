@@ -16,11 +16,11 @@ public class Main {
             System.out.print("Enter column: ");
             int col = myObj.nextInt();
 
-            System.out.println("Changing: " +row+" - "+col);
+            System.out.println("Changing: " + row + " - " + col);
 
             char content = (char) ('A' + i); // imposta il contenuto con lettere dell'alfabeto consecutive
-            boolean falls_with_gravity = i%2 == 0; // alterna blocchi con gravità e senza
-            map.insert_rec(row,col, new Block(content, falls_with_gravity, false));
+            boolean falls_with_gravity = i % 2 == 0; // alterna blocchi con gravità e senza
+            map.insert_rec(row, col, new Block(content, falls_with_gravity, false));
 
             map.display_on_out();
         }

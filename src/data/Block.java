@@ -5,7 +5,7 @@ public class Block {
     private final boolean falls_with_gravity;
     private final boolean falls_through;
 
-    public Block(){
+    public Block() {
         this.content = '.';
         this.falls_with_gravity = false;
         this.falls_through = true;
