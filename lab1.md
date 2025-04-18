@@ -1,8 +1,6 @@
-==========================================================
-		Lab #1
-==========================================================
+# Lab #1
+
 	marco patrignani		marco.patrignani@unitn.it
-==========================================================
 
 1: Language and IDE setup
 ----------------------------------------------------------
@@ -82,7 +80,7 @@ Create una sotto-procedura del main che
  	Aggiungete il codice per stampare la mappa ogni volta.
  	Ragionate quante iterazioni del for fare.
 
-```
+```java
 	System.out.print("Enter row: ");
 	Scanner myObj = new Scanner(System.in);
 	int row = myObj.nextInt();
