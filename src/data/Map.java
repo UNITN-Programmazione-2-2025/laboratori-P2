@@ -2,6 +2,7 @@ package data;
 
 import data.block.AirBlock;
 import data.block.Block;
+import data.block.WaterBlock;
 
 public class Map {
     private final Block[][] map;
@@ -17,6 +18,8 @@ public class Map {
                 map[row][column] = new AirBlock();
             }
         }
+
+        add_river();
     }
 
     public void display_on_out() {
@@ -54,5 +57,21 @@ public class Map {
         }
 
         insert_rec(row+1, column, cell);
+    }
+
+    private void add_rows_of_water() {
+        for (int x = 0; x < width; x++) {
+            insert_rec(x, height - 1, new WaterBlock());
+        }
+    }
+
+    public void add_river() {
+        add_rows_of_water();
+    }
+
+    public void add_sea() {
+        for (int i = 0; i < 3; i++) {
+            add_rows_of_water();
+        }
     }
 }

@@ -8,6 +8,8 @@ public class Main {
     public static void main(String[] args) {
         Map map = new Map(10, 10);
 
+        map.display_on_out();
+
         for (int i = 0; i < 10; i++) {
             System.out.print("Enter row: ");
             Scanner myObj = new Scanner(System.in);
