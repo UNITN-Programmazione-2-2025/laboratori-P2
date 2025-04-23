@@ -1,5 +1,8 @@
 package data;
 
+import data.block.AirBlock;
+import data.block.Block;
+
 public class Map {
     private final Block[][] map;
     private final int rows;
@@ -11,7 +14,7 @@ public class Map {
         map = new Block[rows][columns];
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
-                map[row][column] = new Block();
+                map[row][column] = new AirBlock();
             }
         }
     }
