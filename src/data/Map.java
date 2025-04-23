@@ -60,8 +60,8 @@ public class Map {
     }
 
     private void add_rows_of_water() {
-        for (int x = 0; x < width; x++) {
-            insert_rec(x, height - 1, new WaterBlock());
+        for (int column = 0; column < columns; column++) {
+            insert_rec(0, column, new WaterBlock());
         }
     }
 
