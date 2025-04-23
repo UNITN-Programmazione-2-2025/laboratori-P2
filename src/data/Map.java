@@ -5,6 +5,7 @@ import data.block.Block;
 import data.block.WaterBlock;
 
 public class Map {
+
     private final Block[][] map;
     private final int rows;
     private final int columns;
@@ -43,20 +44,20 @@ public class Map {
 
     public void insert_cell(int row, int column, Block cell) {
         map[row][column] = cell;
-        for (int i = row;  i < columns-1; i++) {
-            if (map[i][column].isFalls_with_gravity() & map[i+1][column].isFalls_through()) {
-               swap_cell(i, column);
+        for (int i = row; i < columns - 1; i++) {
+            if (map[i][column].isFalls_with_gravity() & map[i + 1][column].isFalls_through()) {
+                swap_cell(i, column);
             }
         }
     }
 
     public void insert_rec(int row, int column, Block cell) {
-        if (!cell.isFalls_with_gravity() || row == rows - 1 || !map[row+1][column].isFalls_through()) {
+        if (!cell.isFalls_with_gravity() || row == rows - 1 || !map[row + 1][column].isFalls_through() || map[row + 1][column].display() == cell.display()) {
             map[row][column] = cell;
             return;
         }
 
-        insert_rec(row+1, column, cell);
+        insert_rec(row + 1, column, cell);
     }
 
     private void add_rows_of_water() {
