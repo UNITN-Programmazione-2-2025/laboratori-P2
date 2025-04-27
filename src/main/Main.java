@@ -7,19 +7,20 @@ public class Main {
     private static final int INTERACTIONS = 10;
 
     public static void main(String[] args) {
-        MainView m = new MainView();
-        m.display_on_out();
+        MainView view = new MainView();
+        view.display_on_out();
+        
+        Scanner input = new Scanner(System.in);
         for (int i = 0; i < INTERACTIONS; i++) {
             System.out.print("Enter row and then column, or enter '9' and then '9' for smelting: ");
-            Scanner myObj = new Scanner(System.in);
-            int row = myObj.nextInt();
-            int col = myObj.nextInt();
+            int row = input.nextInt();
+            int col = input.nextInt();
             if (row == 9 && col == 9) {
-                m.smelt();
+                view.smelt();
             } else {
-                m.move_into_furnace(row, col);
+                view.move_into_furnace(row, col);
             }
-            m.display_on_out();
+            view.display_on_out();
         }
     }
 }
