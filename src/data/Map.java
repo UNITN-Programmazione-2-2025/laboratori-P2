@@ -1,7 +1,11 @@
 package data;
 
+import java.util.Random;
+
 import data.block.AirBlock;
 import data.block.Block;
+import data.block.SandBlock;
+import data.block.Smeltable;
 import data.block.WaterBlock;
 
 public class Map {
@@ -21,6 +25,18 @@ public class Map {
         }
 
         add_river();
+
+        randomize(rows * columns / 10);
+    }
+
+    public void randomize(int count) {
+        Random rand = new Random();
+        for (int i = 0 ; i < count; i++){
+            Block b = new SandBlock();
+            int row = rand.nextInt(rows);
+            int col = rand.nextInt(columns);
+            insert_rec(row, col, b);
+        }
     }
 
     public void display_on_out() {
@@ -45,7 +61,7 @@ public class Map {
     public void insert_cell(int row, int column, Block cell) {
         map[row][column] = cell;
         for (int i = row; i < columns - 1; i++) {
-            if (map[i][column].isFalls_with_gravity() & map[i + 1][column].isFalls_through()) {
+            if (map[i][column].isFalls_with_gravity() && map[i + 1][column].isFalls_through()) {
                 swap_cell(i, column);
             }
         }
@@ -74,5 +90,17 @@ public class Map {
         for (int i = 0; i < 3; i++) {
             add_rows_of_water();
         }
+    }
+
+    public Block get_block(int r, int c) {
+        return map[r][c];
+    }
+
+    public boolean is_smeltable(int r, int c) {
+        return map[r][c] instanceof Smeltable;
+    }
+
+    public Smeltable get_smeltable(int r, int c) {
+        return (Smeltable) map[r][c];
     }
 }

@@ -5,24 +5,23 @@ import data.block.SandBlock;
 import java.util.Scanner;
 
 public class Main {
+
+    private static final int INTERACTIONS = 10;
+
     public static void main(String[] args) {
-        Map map = new Map(10, 10);
-
-        map.display_on_out();
-
-        for (int i = 0; i < 10; i++) {
-            System.out.print("Enter row: ");
+        MainView m = new MainView();
+        m.display_on_out();
+        for (int i = 0; i < INTERACTIONS; i++) {
+            System.out.print("Enter row and then column, or enter '9' and then '9' for smelting: ");
             Scanner myObj = new Scanner(System.in);
             int row = myObj.nextInt();
-
-            System.out.print("Enter column: ");
             int col = myObj.nextInt();
-
-            SandBlock sandBlock = new SandBlock();
-            System.out.println("Putting " + sandBlock + " at (" + row + ", " + col + ")");
-            map.insert_rec(row, col, sandBlock);
-
-            map.display_on_out();
+            if (row == 9 && col == 9) {
+                m.smelt();
+            } else {
+                m.move_into_furnace(row, col);
+            }
+            m.display_on_out();
         }
     }
 }
