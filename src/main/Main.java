@@ -1,7 +1,5 @@
 package main;
 
-import data.Map;
-import data.block.SandBlock;
 import java.util.Scanner;
 
 public class Main {
